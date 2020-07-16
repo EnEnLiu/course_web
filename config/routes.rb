@@ -1,3 +1,4 @@
 Rails.application.routes.draw do
-  root 'courses#index'
+  devise_for :users
+  root to: 'courses#index'
 end
