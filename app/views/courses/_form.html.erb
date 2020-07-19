@@ -1,0 +1,32 @@
+<%= form_for @courses do |f| %>
+  <%= f.text_field :title, placeholder: 'Title' %>
+  <%= f.text_field :context, placeholder: 'Description' %>
+  <%= f.text_field :course_amount, placeholder: 'Amount' %>
+  <select name="course[money]" id="course_money">
+    <%= options_for_select(
+      [
+        ['USA', 'USA'],
+        ['TWD', 'TWD'],
+      ], 'TWD'
+    ) %>
+  </select>
+  <select name="course[course_type]" id="course_course_type">
+    <%= options_for_select(
+      [
+        ['Advanced', 'advanced'],
+        ['Intermediate', 'intermediate'],
+        ['Basic', 'basic'],
+      ], 'intermediate'
+    ) %>
+  </select>
+  <%= f.date_select :expiry_date %>
+  <select name="course[on_market]" id="course_on_market">
+    <%= options_for_select(
+      [
+        ['Publish', 'true'],
+        ['Unpublish', 'false'],
+      ], 'false'
+    ) %>
+  </select>
+  <%= f.submit "Create" %>
+<% end %>
