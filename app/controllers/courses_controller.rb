@@ -17,6 +17,10 @@ class CoursesController < ApplicationController
     end
   end
 
+  def edit
+    find_course
+  end
+
   private
   def course_params
     params.require(:course).permit(:title,
@@ -26,5 +30,9 @@ class CoursesController < ApplicationController
                                    :expiry_date,
                                    :on_market,
                                    :course_amount)
+  end
+
+  def find_course
+    @course = Course.find(params[:id])
   end
 end

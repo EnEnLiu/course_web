@@ -1,7 +1,8 @@
 <h1>Courses#index</h1>
 <p>Find me in app/views/courses/index.html.erb</p>
+<p>這裡是後台新增頁面</p>
 
-<%= link_to  "後台", new_course_path %>
+<%= link_to  "新增課程", new_course_path %>
 <table>
   <% @courses.each do |course| %>
   <ul>
@@ -11,5 +12,8 @@
     <li>階段：<%= course.course_type %></li>
     <li>購買截止日：<%= course.expiry_date %></li>
   </ul>
+  <div class="course-action">
+    <%= link_to  "Edit", edit_course_path(course) %>
+  </div>
   <% end %>
 </table>
