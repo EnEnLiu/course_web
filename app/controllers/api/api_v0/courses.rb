@@ -1,22 +1,44 @@
 class Api::ApiV0::Courses < Grape::API
-  desc 'get all courses'
-  get "/courses" do
-    courses = Course.all
+  resource :courses do
+    desc 'Get all courses'
+    get  do
+      courses = Course.all
+      present courses, with: Api::ApiV0::Entities::Course
+    end
 
-    present courses, with: Api::ApiV0::Entities::Course
-  end
+    desc 'Return a specific courses'
+    get ':id' do
+      course = Course.find(params[:id])
+      present course, with: Api::ApiV0::Entities::Course
 
-  desc 'return a specific courses'
-  get '/courses/:id' do
-    course = Course.find(params[:id])
-    present course, with: Api::ApiV0::Entities::Course
-  end
+      resource :buy_course do
+        desc 'Buy a course'
+        params do
+          requires :buy_course, type: Hash do
+            requires :user_id, type: integer, desc: "Buyer's id"
+            requires :course_id, type: integer, desc: "Course's id"
+          end
+        end
+        post do
+          user_record = current_user.course_records.all
+          unless user_record.include?(course)
+            CourseRecord.create!(params[:buy_course]) if current_user
+          end
+        end
+      end
+    end
 
-  desc 'buy a course'
-  # before_action :authenticate_user!
-  get '/courses/:id/add_record' do
-    # course = Course.find(params[:id])
-    # present course, with: Api::ApiV0::Entities::Course
-    '買起來'
+    desc 'Search courses by type'
+    get 'result_type' do
+      courses = Course.where('course_type LIKE ?', "%#{params[:search]}%")
+      present courses, with: Api::ApiV0::Entities::Course
+    end
+
+    desc 'Search for unexpired courses'
+    get 'result_expired' do
+      courses = Course.where('expiry_date > ?', Time.now)
+    end
+
+
   end
 end

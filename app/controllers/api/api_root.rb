@@ -1,6 +1,5 @@
 class Api::ApiRoot < Grape::API
-
   format :json
 
-  mount ApiV0::Base
+  mount Api::ApiV0::Base
 end
