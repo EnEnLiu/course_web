@@ -29,16 +29,9 @@ class Api::ApiV0::Courses < Grape::API
     end
 
     desc 'Search courses by type'
-    get 'result_type' do
-      courses = Course.where('course_type LIKE ?', "%#{params[:search]}%")
+    get 'result' do
+      courses = Course.where('course_type LIKE ? OR expiry_date > ?', "%#{params[:search]}%", Time.now)
       present courses, with: Api::ApiV0::Entities::Course
     end
-
-    desc 'Search for unexpired courses'
-    get 'result_expired' do
-      courses = Course.where('expiry_date > ?', Time.now)
-    end
-
-
   end
 end
