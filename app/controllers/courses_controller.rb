@@ -21,6 +21,16 @@ class CoursesController < ApplicationController
     find_course
   end
 
+  def update
+    find_course
+    @courses.save
+    if @courses.save
+      redirect_to courses_path, notice: 'Update!'
+    else
+      render :new
+    end
+  end
+
   private
   def course_params
     params.require(:course).permit(:title,

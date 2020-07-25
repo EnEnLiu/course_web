@@ -10,19 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_20_090634) do
+ActiveRecord::Schema.define(version: 2020_07_24_103804) do
 
   create_table "course_records", force: :cascade do |t|
     t.integer "user_id"
     t.integer "course_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.string "title"
     t.string "context"
     t.float "course_amount"
     t.string "money"
     t.string "course_type"
     t.time "expiry_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["course_id"], name: "index_course_records_on_course_id"
     t.index ["user_id"], name: "index_course_records_on_user_id"
   end
@@ -34,9 +34,9 @@ ActiveRecord::Schema.define(version: 2020_07_20_090634) do
     t.string "context"
     t.time "expiry_date"
     t.boolean "on_market"
+    t.float "course_amount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.float "course_amount"
   end
 
   create_table "users", force: :cascade do |t|
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 2020_07_20_090634) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "auth_token"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
