@@ -11,15 +11,15 @@ RSpec.describe Api::ApiV0::Courses do
       expect(response.status).to eq(200)
     end
 
-    # it 'return a course by id' do
-    #   course = create(:course)
+    it 'return a course by id' do
+      course = create(:course)
 
-    #   get 'api/v0/courses/#{course.id}'
+      get 'api/v0/courses/#{course.id}'
 
-    #   # result = JSON.parse(response.body)
+      # result = JSON.parse(response.body)
 
-    #   expect(response.status).to eq(200)
-      # expuect(result['title']).to eq(course.title)
-    # end
+      expect(response.status).to eq(200)
+      expuect(result['title']).to eq(course.title)
+    end
   end
 end
