@@ -4,5 +4,5 @@ class Api::ApiV0::Base < Grape::API
 
   mount Ping
   mount Courses
-  # mount Users
+  mount Users
 end

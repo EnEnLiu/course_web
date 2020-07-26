@@ -4,9 +4,10 @@ RSpec.describe Api::ApiV0::Courses do
   before(:all) do
     @user = create(:user)
   end
+
   context 'GET /courses' do
     it 'should return 200 and all unexp courses' do
-      get 'api/v0/courses'
+      get '/api/v0/courses'
 
       expect(response.status).to eq(200)
     end
@@ -14,12 +15,18 @@ RSpec.describe Api::ApiV0::Courses do
     it 'return a course by id' do
       course = create(:course)
 
-      get 'api/v0/courses/#{course.id}'
+      get "/api/v0/courses/#{@course.id}"
 
-      # result = JSON.parse(response.body)
+      result = JSON.parse(response.body)
 
       expect(response.status).to eq(200)
-      expuect(result['title']).to eq(course.title)
+      expect(result['title']).to eq(course.title)
+    end
+
+    it 'Search courses by type' do
+      course =
     end
   end
+
+  # context ''
 end
