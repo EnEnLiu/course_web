@@ -27,7 +27,7 @@ class Api::ApiV0::Courses < Grape::API
     end
 
     desc 'Search courses by type'
-    get '/result_type' do
+    post '/result_type' do
       courses = Course.where('course_type LIKE ? , "%#{params[:search]}%" ')
       present courses, with: Api::ApiV0::Entities::Course
     end

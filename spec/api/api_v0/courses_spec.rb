@@ -14,8 +14,7 @@ RSpec.describe Api::ApiV0::Courses do
 
     it 'return a course by id' do
       course = create(:course)
-
-      get "/api/v0/courses/#{@course.id}"
+      get "/api/v0/courses/#{course.id}"
 
       result = JSON.parse(response.body)
 
@@ -24,7 +23,15 @@ RSpec.describe Api::ApiV0::Courses do
     end
 
     it 'Search courses by type' do
-      course =
+      # search = 'Reading lession'
+      # course = create(:course, course_type: 'Reading lession')
+
+      # get "/api/v0/result_type/?course_type=#{course.course_type}"
+
+      # expect(response.status).to eq(200)
+    end
+
+    it "Search courses that user don't own" do
     end
   end
 
