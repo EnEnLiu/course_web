@@ -26,23 +26,15 @@ class Api::ApiV0::Courses < Grape::API
       end
     end
 
-    desc 'Search courses by type'
+    desc 'User can search courses by type form course_record'
     get '/result_type' do
-      courses = Course.where('course_type LIKE ? , "%#{params[:search]}%"')
+      courses = courrent_user.Course.result_type
       present courses, with: Api::ApiV0::Entities::Course
     end
 
-    desc "Search courses that user don't own"
+    desc "User can search courses that user can buy"
     get '/result_courses' do
-      user_record = []
-      courrent_user.course_records.find_each{ |i| user_record.push(i.id) }
-
-      all_courses = []
-      Course.find_each{ |x| all_courses.push(x.id) }
-
-      result = user_record - all_courses
-      course = Course.where(id: result)
-
+      courses = CourseRecord.is_exp
       present courses, with: Api::ApiV0::Entities::Course
     end
   end

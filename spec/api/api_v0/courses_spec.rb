@@ -21,6 +21,14 @@ RSpec.describe Api::ApiV0::Courses do
       expect(response.status).to eq(200)
       expect(result['title']).to eq(course.title)
     end
+  end
+
+  context 'Search specific courses' do
+    it 'Search fail' do
+      expect {
+        get '/api/v0/result_type'
+      }.to raise_error ActiveRecord::RecordNotFound
+    end
 
     it 'Search courses by type' do
       type = create(:type)
@@ -29,7 +37,16 @@ RSpec.describe Api::ApiV0::Courses do
 
       expect(response.status).to eq(200)
     end
-  end
 
-  # context ''
+    it "User can search courses that can buy" do
+      course1 = create(:course, expiry_date: 5)
+      course2 = create(:course, expiry_date: 0)
+
+      get '/result_courses'
+
+      result = JSON.parse(response.body)
+
+      expect(result.size).to eq(1)
+    end
+  end
 end
