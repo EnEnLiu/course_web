@@ -1,4 +1,5 @@
 class CoursesController < ApplicationController
+  before_action :find_course, only: [:edit, :show, :update, :destroy]
   def index
     @courses = Course.all
   end
@@ -18,17 +19,22 @@ class CoursesController < ApplicationController
   end
 
   def edit
-    find_course
+  end
+
+  def show
   end
 
   def update
-    find_course
-    @courses.save
-    if @courses.save
-      redirect_to courses_path, notice: 'Update!'
+    if @courses.update(course_params)
+      redirect_to courses_path, notice: '課程新增!'
     else
       render :new
     end
+  end
+
+  def destroy
+    @item.destroy
+    redirect_to courses_path, notice: '成功刪除課程!'
   end
 
   private
@@ -39,7 +45,8 @@ class CoursesController < ApplicationController
                                    :course_type,
                                    :expiry_date,
                                    :on_market,
-                                   :course_amount)
+                                   :course_amount,
+                                   :url)
   end
 
   def find_course

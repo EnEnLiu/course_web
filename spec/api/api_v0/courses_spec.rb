@@ -23,15 +23,11 @@ RSpec.describe Api::ApiV0::Courses do
     end
 
     it 'Search courses by type' do
-      search = 'Reading lession'
-      course = create(:course, course_type: 'Reading lession')
-byebug
-      get "/api/v0/result_type/?course_type=#{course.course_type}"
+      type = create(:type)
+
+      get "/api/v0/result_type/#{@user.auth_token}?type=#{type.id}"
 
       expect(response.status).to eq(200)
-    end
-
-    it "Search courses that user don't own" do
     end
   end
 

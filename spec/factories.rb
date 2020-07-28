@@ -13,4 +13,9 @@ FactoryBot.define do
     on_market { 'ture' }
     expiry_date { Faker::Date.forward(days: 30) }
   end
+
+  factory :type do
+    name { ['Advanced', 'Intermediate', 'Basic'].sample }
+  end
+
 end

@@ -43,5 +43,11 @@
       ], 'false'
     ) %>
   </select>
+  <div class="input-group">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="basic-addon1">https://snapask.com/</span>
+    </div>
+    <%= f.text_field :url, placeholder: 'Link', class: 'form-control' %>
+  </div>
   <%= f.submit "Create", class: 'btn btn-primary' %>
 <% end %>

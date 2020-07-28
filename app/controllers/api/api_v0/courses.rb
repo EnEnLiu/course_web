@@ -20,15 +20,15 @@ class Api::ApiV0::Courses < Grape::API
       end
     end
     post'/buy_course' do
-      user_record = current_user.course_records.all
+      user_record = current_user.course_records
       unless user_record.include?(course)
         CourseRecord.create!(params[:buy_course]) if current_user
       end
     end
 
     desc 'Search courses by type'
-    post '/result_type' do
-      courses = Course.where('course_type LIKE ? , "%#{params[:search]}%" ')
+    get '/result_type' do
+      courses = Course.where('course_type LIKE ? , "%#{params[:search]}%"')
       present courses, with: Api::ApiV0::Entities::Course
     end
 
