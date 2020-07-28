@@ -31,4 +31,5 @@
   1. 使用 Rspec 撰寫測試
   2. 請 deploy 到 Heroku or AWS EC2
 
-![Imgur](https://i.imgur.com/cdn4MuP.jpg)
+![Imgur](https://i.imgur.com/8xp7UJT.jpg)
+
