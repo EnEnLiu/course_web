@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_24_103804) do
+ActiveRecord::Schema.define(version: 2020_07_27_100201) do
 
   create_table "course_records", force: :cascade do |t|
     t.integer "user_id"
@@ -27,6 +27,15 @@ ActiveRecord::Schema.define(version: 2020_07_24_103804) do
     t.index ["user_id"], name: "index_course_records_on_user_id"
   end
 
+  create_table "course_types", force: :cascade do |t|
+    t.integer "course_id"
+    t.integer "type_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_course_types_on_course_id"
+    t.index ["type_id"], name: "index_course_types_on_type_id"
+  end
+
   create_table "courses", force: :cascade do |t|
     t.string "title"
     t.string "money"
@@ -35,6 +44,13 @@ ActiveRecord::Schema.define(version: 2020_07_24_103804) do
     t.time "expiry_date"
     t.boolean "on_market"
     t.float "course_amount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "url"
+  end
+
+  create_table "types", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

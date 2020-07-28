@@ -11,9 +11,11 @@
         <li class="list-group-item">課程價格：<%= course.course_amount %>（<%= course.money %>）</li>
         <li class="list-group-item">階段：<%= course.course_type %></li>
         <li class="list-group-item">購買截止日：<%= course.expiry_date %></li>
+        <li class="list-group-item">網址：https://snapask.com/<%= course.url %></li>
       </ul>
       <div class="course-action">
-        <%= link_to  "Edit", edit_course_path(course), :class => 'btn btn-primary' %>
+        <%= link_to  "編輯", edit_course_path(course), :class => 'btn btn-primary' %>
+        <%= link_to  "刪除", course_path(course), method: 'delete', :class => 'btn btn-primary' %>
       </div>
     </div>
     <% end %>
