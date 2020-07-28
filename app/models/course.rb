@@ -8,5 +8,6 @@ class Course < ApplicationRecord
   has_many :course_types
   has_many :types, through: :course_types
 
-
+  scope :result_type, -> (search){ where('course_type LIKE ? , "%#{params[search]}%"') }
+  scope :is_exp, -> { where('course_records.expiry_date < ? , Time.current') }
 end
