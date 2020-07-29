@@ -33,4 +33,8 @@
 ___ 
 Table schema
 ![Imgur](https://i.imgur.com/vXdyvdL.jpg)
+___
+1. bundle install
+2. rails db:migrate
+3. rails db:seed
 
