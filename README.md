@@ -34,7 +34,7 @@ ___
 ### Table schema
 ![Imgur](https://i.imgur.com/vXdyvdL.jpg)
 ___
-### 安裝套件須知
+### 安裝須知
 ```
 $ bundle install
 $ rails db:create
