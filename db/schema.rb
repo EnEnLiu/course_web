@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_27_100201) do
+ActiveRecord::Schema.define(version: 2020_07_29_075715) do
 
   create_table "course_records", force: :cascade do |t|
     t.integer "user_id"
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2020_07_27_100201) do
     t.float "course_amount"
     t.string "money"
     t.string "course_type"
-    t.time "expiry_date"
+    t.datetime "expiry_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["course_id"], name: "index_course_records_on_course_id"
@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 2020_07_27_100201) do
     t.string "money"
     t.string "course_type"
     t.string "context"
-    t.time "expiry_date"
+    t.datetime "expiry_date"
     t.boolean "on_market"
     t.float "course_amount"
     t.datetime "created_at", null: false
