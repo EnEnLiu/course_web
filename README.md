@@ -31,10 +31,23 @@
   1. 使用 Rspec 撰寫測試
   2. 請 deploy 到 Heroku or AWS EC2
 ___ 
-Table schema
+### Table schema
 ![Imgur](https://i.imgur.com/vXdyvdL.jpg)
 ___
-1. bundle install
-2. rails db:migrate
-3. rails db:seed
-
+### 安裝套件須知
+1. 
+```
+$ bundle install
+```
+2. 
+```
+$ rails db:create
+```
+3. 
+```
+$ rails db:migrate
+```
+4. 
+```
+$ rails db:seed
+```
