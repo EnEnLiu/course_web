@@ -1,23 +1,23 @@
 <%= form_for(courses, :html => {class: 'form'})do |f| %>
-  <div class="input-group">
+  <div class="input-group mb-2">
     <div class="input-group-prepend">
       <span class="input-group-text" id="basic-addon1">Title</span>
     </div>
     <%= f.text_field :title, placeholder: 'Title', class: 'form-control' %>
   </div>
-  <div class="input-group">
+  <div class="input-group mb-2">
     <div class="input-group-prepend">
       <span class="input-group-text" id="basic-addon1">Description</span>
     </div>
     <%= f.text_field :context, placeholder: 'Description', class: 'form-control' %>
   </div>
-  <div class="input-group">
+  <div class="input-group mb-2">
     <div class="input-group-prepend">
       <span class="input-group-text" id="basic-addon1">Amount</span>
     </div>
     <%= f.text_field :course_amount, placeholder: 'Amount', class: 'form-control' %>
   </div>
-  <select name="course[money]" id="course_money" class="form-control">
+  <select name="course[money]" id="course_money" class="form-control mb-2">
     <%= options_for_select(
       [
         ['USA', 'USA'],
@@ -25,7 +25,7 @@
       ], 'TWD'
     ) %>
   </select>
-  <select name="course[course_type]" id="course_course_type" class="form-control">
+  <select name="course[course_type]" id="course_course_type" class="form-control mb-2">
     <%= options_for_select(
       [
         ['Advanced', 'advanced'],
@@ -35,7 +35,7 @@
     ) %>
   </select>
   <%= f.date_select :expiry_date %>
-  <select name="course[on_market]" id="course_on_market" class="form-control">
+  <select name="course[on_market]" id="course_on_market" class="form-control mb-2 mt-2">
     <%= options_for_select(
       [
         ['Publish', 'true'],
@@ -43,7 +43,7 @@
       ], 'false'
     ) %>
   </select>
-  <div class="input-group">
+  <div class="input-group mb-2">
     <div class="input-group-prepend">
       <span class="input-group-text" id="basic-addon1">https://snapask.com/</span>
     </div>

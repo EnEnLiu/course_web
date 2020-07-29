@@ -28,7 +28,7 @@ class Api::ApiV0::Courses < Grape::API
 
     desc 'User can search courses by type form course_record'
     get '/result_type' do
-      courses = courrent_user.Course.result_type
+      courses = current_user.Course.result_type
       present courses, with: Api::ApiV0::Entities::Course
     end
 

@@ -1,10 +1,10 @@
 <h1>後台頁面</h1>
 
 <%= link_to  "新增課程", new_course_path, :class => 'btn btn-primary' %>
-<div class="container d-flex justify-content-around">
-  <div class="row">
+<div class="row">
     <% @courses.each do |course| %>
-    <div class="card col-xl-4 col-md-6 col-sm-12 mt-5 pr-3 pl-3">
+  <div class="course-item col-xl-3 col-md-6 col-sm-12">
+    <div class="card">
       <ul class="list-group-flush card-body m-auto">
         <li class="list-group-item"><div class="course-title">課程：<%= course.title %></div></li>
         <li class="list-group-item">內容：<%= course.context %></li>
@@ -18,7 +18,7 @@
         <%= link_to  "刪除", course_path(course), method: 'delete', :class => 'btn btn-primary' %>
       </div>
     </div>
-    <% end %>
   </div>
-
+    <% end %>
 </div>
+
